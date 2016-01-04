@@ -74,6 +74,8 @@ Vagrant.configure(2) do |config|
     sed -i 's#FLEX =#FLEX = /usr/bin/flex#' postgres/src/Makefile.global
     cd postgres && ./configure && make
     sudo make install
+    cd contrib && make
+    sudo make install
     sudo ln -s /usr/local/pgsql/bin/* /usr/bin
     sudo useradd postgres
     sudo mkdir /usr/local/pgsql/data
