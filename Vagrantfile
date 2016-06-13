@@ -4,7 +4,8 @@
 Vagrant.configure(2) do |config|
 
   config.vm.box = "geerlingguy/ubuntu1604"
-  # config.vm.synced_folder "../data", "/vagrant_data"
+
+  config.vm.synced_folder ".", "/home/vagrant/shared"
 
   config.vm.provider "virtualbox" do |vb|
     vb.memory = "4096"
