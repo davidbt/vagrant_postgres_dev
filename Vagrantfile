@@ -28,6 +28,8 @@ Vagrant.configure(2) do |config|
     sudo chown postgres /usr/local/pgsql/data
     sudo su postgres -c "export LC_ALL=en_US.utf8 && initdb -D /usr/local/pgsql/data/"
     sudo su postgres -c "pg_ctl -D /usr/local/pgsql/data/ -l /usr/local/pgsql/data/postgres.log start"
-    sudo su postgres -c "createuser -s vagrant"
+    sleep 10
+    sudo su postgres -c "createdb test"
+    cat /home/vagrant/shared/test_parallel.sql | sudo su postgres -c "psql test"
   SHELL
 end
